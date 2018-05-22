@@ -1,0 +1,38 @@
+server:
+  port: 5555
+
+eureka:
+  instance:
+    preferIpAddress: true
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+  serviceUrl:
+    defaultZone: http://eurekaserver:8761/eureka/
+
+zuul:
+  prefix: /api
+  routes:
+    customer-suggestion: /customersuggestion/**
+    
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 3000
+    ifc-customer-suggestion:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 3000
+            
+management:
+  security:
+    enabled: false
+    
+storeMapping:
+      www-store1-dev.com.br: STORE1
+      www-store2-dev.com.br: STORE2
+      www-store3-dev.com.br: STORE3

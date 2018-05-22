@@ -1,0 +1,34 @@
+server:
+  port: 8080
+
+eureka:
+  instance:
+    preferIpAddress: true
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+
+spring:
+  application:
+    name: customer-suggestion
+
+  jpa:
+    hibernate:
+      ddl-auto: create
+      show_sql: true
+      format_sql: true
+      dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url-base: jdbc:mysql://dev-aws-rds.c8pxvqbrrwg6.us-east-1.rds.amazonaws.com:3306
+    url: jdbc:mysql://dev-aws-rds.c8pxvqbrrwg6.us-east-1.rds.amazonaws.com:3306/userservicedb
+    username: root
+    password: "{cipher}0aa50b13cf4f8a03f3649a825ed7895ddff207cd74d114d8dc416a102c6296eb"
+
+
+logging:
+  level:
+    org.hibernate.SQL: DEBUG
+    org.hibernate.type.descriptor.sql.BasicBinder: TRACE
